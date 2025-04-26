@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Form</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+  <div class="contact-container">
+    <div class="right">
+      <h1 class="title">Sign-In</h1>
+      <img class="logo" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" />
+      <div class="form-container">
+        <div class="username">
+          <i data-feather="mail" class="icon"></i>
+          <input type="email" class="user-input" placeholder="E-Mail" />
+        </div>
+        <div class="password">
+          <i data-feather="lock" class="icon"></i>
+          <input type="password" class="pass-input" placeholder="Password" />
+        </div>
+        <div class="keepme">
+          <input type="checkbox" checked /> Keep Me Logged In
+        </div>
+        <button type="submit">Go!</button>
+        <a href="#" class="link">Forgot Password?</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dynamic Background Colors
+    const colors = [
+      "linear-gradient(135deg, #6a11cb, #2575fc)",
+      "linear-gradient(135deg, #ff416c, #ff4b2b)",
+      "linear-gradient(135deg, #00c9ff, #92fe9d)",
+      "linear-gradient(135deg, #f7971e, #ffd200)",
+      "linear-gradient(135deg, #9d50bb, #6e48aa)"
+    ];
+    let index = 0;
+    setInterval(() => {
+      document.body.style.background = colors[index];
+      index = (index + 1) % colors.length;
+    }, 5000);
+  </script>
+
+  <script>
+    feather.replace();
+  </script>
+</body>
+
+</html>

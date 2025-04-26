@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Touch Bar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            font-family: "Poppins", sans-serif;
+            perspective: 1000px;
+        }
+
+        /* Main Container */
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        /* Search Field */
+        .searchfield {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            padding: 0 60px 0 20px;
+            border: none;
+            outline: none;
+            background: #fff;
+            color: #333;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 
+                0 10px 25px rgba(0, 0, 0, 0.3),
+                0 5px 10px rgba(0, 0, 0, 0.2),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            opacity: 0;
+            z-index: 5;
+            transform-style: preserve-3d;
+            transform: rotateY(20deg);
+        }
+
+        .searchfield::placeholder {
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        /* Search Icon */
+        .search {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 
+                0 5px 15px rgba(0, 0, 0, 0.2),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.1),
+                inset 0 2px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 10;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+        }
+
+        .search i {
+            font-size: 24px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* 3D Hover Effects */
+        .search:hover {
+            transform: rotateY(0deg) translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.3),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.1),
+                inset 0 2px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .search:active {
+            transform: rotateY(0deg) translateY(2px) scale(0.98);
+            box-shadow: 
+                0 3px 10px rgba(0, 0, 0, 0.2),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* Expanded State */
+        .searchfield:focus {
+            width: 100%;
+            opacity: 1;
+            transform: rotateY(0deg);
+            box-shadow: 
+                0 10px 25px rgba(0, 0, 0, 0.3),
+                0 5px 10px rgba(0, 0, 0, 0.2),
+                inset 0 -3px 0 rgba(0, 0, 0, 0.1);
+            padding-right: 20px;
+        }
+
+        .searchfield:focus ~ .search {
+            right: 10px;
+            background: linear-gradient(45deg, #FF5722, #FF9800);
+            transform: rotateY(0deg) scale(0.9);
+        }
+
+        .searchfield:focus ~ .search i {
+            transform: rotate(90deg);
+        }
+
+        /* Close Button State */
+        .searchfield:not(:placeholder-shown) ~ .search i {
+            transform: rotate(90deg);
+        }
+
+        /* Floating Label Effect */
+        .search-label {
+            position: absolute;
+            left: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-weight: 600;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .searchfield:focus ~ .search-label {
+            opacity: 1;
+            left: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .search-container {
+                height: 60px;
+            }
+            
+            .searchfield, .search {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .searchfield {
+                font-size: 16px;
+                padding: 0 50px 0 15px;
+            }
+            
+            .search i {
+                font-size: 20px;
+            }
+            
+            .searchfield:focus {
+                width: calc(100% - 20px);
+            }
+            
+            .searchfield:focus ~ .search {
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .search-container {
+                height: 50px;
+            }
+            
+            .searchfield, .search {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .searchfield {
+                font-size: 14px;
+                padding: 0 45px 0 12px;
+            }
+            
+            .search i {
+                font-size: 18px;
+            }
+            
+            .searchfield:focus ~ .search-label {
+                font-size: 14px;
+                left: 20px;
+            }
+        }
+
+        /* Micro-interactions */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .search.pulse {
+            animation: pulse 1.5s infinite;
+        }
+
+        /* Dark Mode Support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #1a1a2e, #16213e);
+            }
+            
+            .searchfield {
+                background: #333;
+                color: #fff;
+            }
+            
+            .searchfield::placeholder {
+                color: #bbb;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search-container">
+        <input type="text" class="searchfield" placeholder="Search...">
+        <div class="search"><i class="fas fa-search"></i></div>
+        <span class="search-label">What are you looking for?</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchField = document.querySelector('.searchfield');
+            const searchIcon = document.querySelector('.search');
+            
+            // Add pulse animation when hovering search icon
+            searchIcon.addEventListener('mouseenter', () => {
+                searchIcon.classList.add('pulse');
+            });
+            
+            searchIcon.addEventListener('mouseleave', () => {
+                searchIcon.classList.remove('pulse');
+            });
+            
+            // Focus search field when clicking icon
+            searchIcon.addEventListener('click', () => {
+                searchField.focus();
+            });
+            
+            // Add 3D tilt effect on mouse move
+            document.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                searchIcon.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            
+            // Reset position when mouse leaves window
+            document.addEventListener('mouseleave', () => {
+                searchIcon.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            });
+        });
+    </script>
+</body>
+
+</html>

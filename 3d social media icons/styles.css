@@ -1,0 +1,355 @@
+/* Basic styling */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* Background image styling */
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0.9;
+}
+
+
+/* Container styling */
+
+.social-container {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 90%;
+    margin: 50px auto;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-container h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Make all icons in a row */
+
+.social-icons-3d {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+
+/* Set font size, color, padding, transition on icons */
+
+.social-icons-3d li a .fa {
+    font-size: 30px;
+    color: #262626;
+    line-height: 70px;
+    transition: .5s;
+    padding-right: 12px;
+}
+
+
+/* add 3d effect on icons */
+
+.social-icons-3d li a {
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 70px;
+    background: rgba(206, 202, 202, 0.8);
+    text-align: center;
+    padding-left: 18px;
+    transform: rotate(318deg) skew(199deg) translate(0, 0);
+    transition: .5s;
+    box-shadow: -15px 15px 8px rgba(0, 0, 0, .3);
+}
+
+.social-icons-3d li a::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: -16px;
+    height: 100%;
+    width: 16px;
+    background: rgba(138, 111, 111, 0.8);
+    transform: rotate(0deg) skewY(-45deg);
+    transition: .5s;
+}
+
+.social-icons-3d li a::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: -8px;
+    height: 16px;
+    width: 100%;
+    background: rgba(138, 111, 111, 0.8);
+    transform: rotate(0deg) skewX(-45deg);
+    transition: .5s;
+}
+
+
+/* Add hover effect on icons and change icon color on hover */
+
+.social-icons-3d li a:hover {
+    transform: skew(5deg) translate(15px, -40px);
+    box-shadow: -40px 40px 40px rgba(0, 0, 0, .4);
+}
+
+.social-icons-3d li a:hover .fa {
+    color: #fff;
+}
+
+
+/* Social media colors (same as before) */
+
+
+/* Facebook */
+
+.social-icons-3d li .facebook:hover {
+    background: #3b5998;
+}
+
+.social-icons-3d li .facebook:hover::before {
+    background: #365492;
+}
+
+.social-icons-3d li .facebook:hover::after {
+    background: #4a69ad;
+}
+
+
+/* Twitter */
+
+.social-icons-3d li .twitter:hover {
+    background: #00aced;
+}
+
+.social-icons-3d li .twitter:hover::before {
+    background: #097aa5;
+}
+
+.social-icons-3d li .twitter:hover::after {
+    background: #53b9e0;
+}
+
+
+/* Google Plus */
+
+.social-icons-3d li .google-plus:hover {
+    background: #dd4b39;
+}
+
+.social-icons-3d li .google-plus:hover::before {
+    background: #b33a2b;
+}
+
+.social-icons-3d li .google-plus:hover::after {
+    background: #e66a5a;
+}
+
+
+/* Instagram */
+
+.social-icons-3d li .instagram:hover {
+    background: #e4405f;
+}
+
+.social-icons-3d li .instagram:hover::before {
+    background: #d81c3f;
+}
+
+.social-icons-3d li .instagram:hover::after {
+    background: #e46880;
+}
+
+
+/* WhatsApp */
+
+.social-icons-3d li .whatsapp:hover {
+    background: #25D366;
+}
+
+.social-icons-3d li .whatsapp:hover::before {
+    background: #1DA851;
+}
+
+.social-icons-3d li .whatsapp:hover::after {
+    background: #5DF178;
+}
+
+
+/* GitHub */
+
+.social-icons-3d li .github:hover {
+    background: #333;
+}
+
+.social-icons-3d li .github:hover::before {
+    background: #222;
+}
+
+.social-icons-3d li .github:hover::after {
+    background: #555;
+}
+
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+    .social-container {
+        padding: 20px;
+        margin: 30px auto;
+    }
+    .social-container h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    .social-icons-3d li a .fa {
+        font-size: 25px;
+        line-height: 60px;
+    }
+    .social-icons-3d li a {
+        width: 50px;
+        height: 60px;
+        padding-left: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-container {
+        padding: 15px;
+        margin: 20px auto;
+        width: 95%;
+    }
+    .social-icons-3d {
+        gap: 10px;
+    }
+    .social-icons-3d li a .fa {
+        font-size: 20px;
+        line-height: 50px;
+        padding-right: 8px;
+    }
+    .social-icons-3d li a {
+        width: 45px;
+        height: 50px;
+        padding-left: 12px;
+    }
+    .social-icons-3d li a::before {
+        width: 12px;
+        left: -12px;
+    }
+    .social-icons-3d li a::after {
+        height: 12px;
+        bottom: -12px;
+    }
+}
+
+
+/* 3D Butterfly Animation */
+
+.butterfly {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1;
+    pointer-events: none;
+    animation: float 15s infinite linear;
+    opacity: 0.8;
+}
+
+.butterfly-1 {
+    background-image: url('https://www.freeiconspng.com/uploads/blue-butterfly-png-2.png');
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+    transform: scale(0.7) rotate(0deg);
+}
+
+.butterfly-2 {
+    background-image: url('https://www.freeiconspng.com/uploads/orange-butterfly-png-1.png');
+    top: 60%;
+    left: 80%;
+    animation-delay: 3s;
+    transform: scale(0.9) rotate(10deg);
+    animation-duration: 18s;
+}
+
+.butterfly-3 {
+    background-image: url('https://www.freeiconspng.com/uploads/pink-butterfly-png-2.png');
+    top: 30%;
+    left: 50%;
+    animation-delay: 6s;
+    transform: scale(0.6) rotate(-5deg);
+    animation-duration: 20s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.7);
+    }
+    25% {
+        transform: translateY(-50px) translateX(50px) rotate(5deg) scale(0.75);
+    }
+    50% {
+        transform: translateY(-30px) translateX(100px) rotate(10deg) scale(0.8);
+    }
+    75% {
+        transform: translateY(-60px) translateX(50px) rotate(5deg) scale(0.75);
+    }
+    100% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.7);
+    }
+}
+
+
+/* Butterfly fluttering animation */
+
+@keyframes flutter {
+    0%,
+    100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+
+/* Add this to make butterflies flutter */
+
+.butterfly::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    animation: flutter 0.3s infinite alternate;
+}

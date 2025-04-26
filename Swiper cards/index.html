@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Testimonial Slider</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background-color: #0f0f0f;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper {
+      width: 100%;
+      max-width: 1200px;
+      padding: 40px 20px;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .swiper-slide.swiper-slide-active {
+      transform: scale(1.05);
+    }
+
+    .slide-card {
+      background: linear-gradient(135deg, #a2d2ff, #e0c3fc);
+      border-radius: 20px;
+      padding: 30px 20px;
+      max-width: 300px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .slide-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .slide-card-img-top {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      border: 4px solid #fff;
+    }
+
+    .slide-card h5 {
+      font-size: 20px;
+      color: #222;
+      margin-bottom: 5px;
+    }
+
+    .slide-card h5 span {
+      display: block;
+      font-size: 16px;
+      color: #444;
+      font-weight: 400;
+    }
+
+    .slide-card p {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.5;
+      margin-top: 10px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #fff;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @media (max-width: 768px) {
+      .slide-card {
+        max-width: 90%;
+      }
+
+      .slide-card p {
+        font-size: 13px;
+      }
+
+      .slide-card h5 {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .swiper-button-next,
+      .swiper-button-prev {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="slide-card">
+          <img class="slide-card-img-top" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ronne Galle" />
+          <h5>Ronne Galle <span>Project Manager</span></h5>
+          <p>“Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat.”</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="slide-card">
+          <img class="slide-card-img-top" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Anna Smith" />
+          <h5>Anna Smith <span>Frontend Developer</span></h5>
+          <p>“Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam nisi ut aliquid.”</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="slide-card">
+          <img class="slide-card-img-top" src="https://randomuser.me/api/portraits/men/65.jpg" alt="James Doe" />
+          <h5>James Doe <span>UI/UX Designer</span></h5>
+          <p>“Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.”</p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="slide-card">
+          <img class="slide-card-img-top" src="https://randomuser.me/api/portraits/women/22.jpg" alt="Laura Lee" />
+          <h5>Laura Lee <span>Software Engineer</span></h5>
+          <p>“Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”</p>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      centeredSlides: true,
+      breakpoints: {
+        480: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 40
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
+<!--
+  This code creates a responsive testimonial slider using Swiper.js. 
+  It includes custom styles for the cards and buttons, and it is designed to be mobile-friendly.
+  The slider features smooth transitions and hover effects for an enhanced user experience.
+  The testimonials are displayed in a visually appealing manner with images, names, and roles.
+  The slider is fully functional with navigation buttons and responsive breakpoints for different screen sizes.
+  The design is modern and clean, making it suitable for various applications such as portfolios, product reviews, or service testimonials.
+  The code is structured to be easily customizable, allowing for changes in colors, fonts, and layout as needed.
+  The use of external libraries like Swiper.js ensures that the slider is efficient and performs well across devices.
+  The testimonials are fetched from a random user API, providing a diverse set of images and names.
+  The overall design is user-friendly and visually appealing, making it a great addition to any website.
+  -->
